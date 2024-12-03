@@ -32,3 +32,46 @@ There are also a variety of programs built under the `tests` directory:
 		ninja run_tests
 
 4. Any of the above tests can be run using `./{file name}`, e.g. `./speed_kem`.
+
+Usage: speed_kem <options> <alg>
+<options>
+--algs             Print supported algorithms and terminate
+--duration n
+ -d n              Run each speed test for approximately n seconds, default n=3
+--help
+ -h                Print usage
+--info
+ -i                Print info (sizes, security level) about each KEM
+--fullcycle
+ -f                Do full keygen-encaps-decaps cycle for each KEM
+ 
+<alg>              Only run the specified KEM method; must be one of the algorithms output by --algs
+BIKE-L1
+BIKE-L3
+BIKE-L5
+Classic-McEliece-348864
+Classic-McEliece-348864f
+Classic-McEliece-460896
+Classic-McEliece-460896f
+Classic-McEliece-6688128
+Classic-McEliece-6688128f
+Classic-McEliece-6960119
+Classic-McEliece-6960119f
+Classic-McEliece-8192128
+Classic-McEliece-8192128f
+HQC-128
+HQC-192
+HQC-256
+Kyber512
+Kyber768
+Kyber1024
+ML-KEM-512
+ML-KEM-768
+ML-KEM-1024
+sntrup761
+FrodoKEM-640-AES
+FrodoKEM-640-SHAKE
+FrodoKEM-976-AES
+FrodoKEM-976-SHAKE
+FrodoKEM-1344-AES
+FrodoKEM-1344-SHAKE
