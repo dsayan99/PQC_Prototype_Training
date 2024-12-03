@@ -24,7 +24,7 @@ A connection will be established with the nginx server and the details about the
 
 A pre-requisite to this step is installing a beta version of Chrome 131+ or Firefox 132+.
 
-1. Navigate to `Task 2\nginx-default`.
+1. Navigate to `Task 2\oqs-nginx`.
 2. `docker build -t oqs-nginx .` This will generate the image with a default rsa:2048 algorithm.
 3. Run `docker run --detach --rm --name oqs-nginx -p 4433:4433 oqs-nginx` to start the server.
 4. The configuration is defined in the `nginx-conf\nginx.conf` file.
