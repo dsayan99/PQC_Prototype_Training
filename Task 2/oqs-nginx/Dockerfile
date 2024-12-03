@@ -115,6 +115,10 @@ RUN set -x && \
     openssl req -new -newkey ${SIG_ALG} -keyout pki/server.key -out server.csr -nodes -subj "/CN=oqs-nginx" -config ${OSSLDIR}/ssl/openssl.cnf && \
     openssl x509 -req -in server.csr -out pki/server.crt -CA cacert/CA.crt -CAkey CA.key -CAcreateserial -days 365
 
+RUN openssl req -x509 -new -newkey "dilithium3" -keyout CA_d3.key -out cacert/CA_d3.crt -nodes -subj "/CN=oqstest CA" -days 365 -config ${OSSLDIR}/ssl/openssl.cnf && \
+    openssl req -new -newkey "dilithium3" -keyout pki/server_d3.key -out server_d3.csr -nodes -subj "/CN=oqs-nginx" -config ${OSSLDIR}/ssl/openssl.cnf && \
+    openssl x509 -req -in server_d3.csr -out pki/server_d3.crt -CA cacert/CA_d3.crt -CAkey CA_d3.key -CAcreateserial -days 365
+
 # further optimize sizes:
 #RUN rm ${OSSLDIR}/bin/*
 
