@@ -107,7 +107,7 @@ WORKDIR ${INSTALLDIR}
 
 ENV PATH ${INSTALLDIR}/sbin:${OSSLDIR}/bin:$PATH
 # begin optimizing sizes:
-RUN strip ${OSSLDIR}/lib/*.a ${OSSLDIR}/lib64/ossl-modules/oqsprovider.so ${INSTALLDIR}/sbin/* ${INSTALLDIR}/sbin/*
+#RUN strip ${OSSLDIR}/lib/*.a ${OSSLDIR}/lib64/ossl-modules/oqsprovider.so ${INSTALLDIR}/sbin/* ${INSTALLDIR}/sbin/*
 RUN set -x && \
     mkdir cacert && \
     mkdir pki && \
@@ -116,24 +116,24 @@ RUN set -x && \
     openssl x509 -req -in server.csr -out pki/server.crt -CA cacert/CA.crt -CAkey CA.key -CAcreateserial -days 365
 
 # further optimize sizes:
-RUN rm ${OSSLDIR}/bin/*
+#RUN rm ${OSSLDIR}/bin/*
 
 # second stage: Only create minimal image without build tooling and intermediate build results generated above:
-FROM alpine:${ALPINE_VERSION}
+#FROM alpine:${ALPINE_VERSION}
 # Take in global args
-ARG LIBOQS_BUILD_DEFINES
-ARG INSTALLDIR
-ARG SIG_ALG
-ARG BASEDIR
-ARG OSSLDIR=${BASEDIR}/openssl/.openssl
+#ARG LIBOQS_BUILD_DEFINES
+#ARG INSTALLDIR
+#ARG SIG_ALG
+#ARG BASEDIR
+#ARG OSSLDIR=${BASEDIR}/openssl/.openssl
 
-LABEL version="3"
+#LABEL version="3"
 
-RUN apk add pcre-dev
+#RUN apk add pcre-dev
 
 # Only retain the ${*_PATH} contents in the final image
-COPY --from=intermediate ${INSTALLDIR} ${INSTALLDIR}
-COPY --from=intermediate ${OSSLDIR} ${OSSLDIR}
+#COPY --from=intermediate ${INSTALLDIR} ${INSTALLDIR}
+#COPY --from=intermediate ${OSSLDIR} ${OSSLDIR}
 COPY nginx-conf/ ${INSTALLDIR}/nginx-conf
 
 WORKDIR ${INSTALLDIR}
@@ -156,5 +156,5 @@ USER oqs
 # From nginx 1.25.2: "nginx does not try to load OpenSSL configuration if the --with-openssl option was used to built OpenSSL and the OPENSSL_CONF environment variable is not set".
 # We therefore have to set the OPENSSL_CONF environment variable.
 ENV OPENSSL_CONF ${OSSLDIR}/ssl/openssl.cnf
-# CMD ["nginx", "-c", "nginx-conf/nginx.conf", "-g", "daemon off;"]
-CMD ["bash"]
+CMD ["nginx", "-c", "nginx-conf/nginx.conf", "-g", "daemon off;"]
+#CMD ["bash"]
