@@ -7,7 +7,8 @@ A nginx demo server on localhost.
 
 1. Navigate to `Task 2\nginx-default`.
 2. Run `docker build -t nginx-rsa .` to build the container. This will open the terminal inside the container.
-3. Within the terminal, type `nginx -c /etc/nginx/nginx.conf -g "daemon off;"` The server will start on port 443. To edit the port and the server configuration navigate to `/etc/nginx/nginx.conf` and change the code for HTTPS Server. The server needs to be restarted after changing the configruation.
+3. Run `docker run --detach --rm --name oqs-nginx -p 443:443 oqs-nginx` to start the server.
+3. The server will start on port 443. To edit the port and the server configuration, open a terminal and then navigate to `/etc/nginx/nginx.conf` and change the code for HTTPS Server. The server needs to be restarted after changing the configruation.
 4. Open the Browser, open `https:localhost:443`. Right Click -> Inspect -> Security. The Key Exchange Protocol will be visible.
 
 The Key Exchange protocol will most likely show X25519 Key Exchange which is a Pre-Quantum Key Exchange Protocol.
