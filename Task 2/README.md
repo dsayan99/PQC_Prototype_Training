@@ -36,3 +36,8 @@ Using `openssl s_client`, a connection can also be established with the server.
 
 1. Run `docker exec -it <container_id> /bin/sh` to open a terminal within the container. Replace `<container_id>` with the actual docker container id which can be retrieved from `docker ps -a`.
 2. Run `openssl s_client -connect localhost:4433 -groups X25519MLKEM768`
+
+Additionally, the docker image also creates a Certificate using `dilithium3`.
+
+1. `openssl s_server -key pki/server_d3.key -cert pki/server_d3.crt -CAfile cacert/CA_d3.crt -accept 4533` will start a server using openssl with the dilithium3 certificate.
+2. `openssl s_client -connect localhost:4533 -groups X25519MLKEM768` will establish a connection with the above server.
