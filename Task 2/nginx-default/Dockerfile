@@ -37,5 +37,5 @@ server {\n\
 EXPOSE 443
 
 # Start Nginx
-# CMD ["nginx", "-g", "daemon off;"]
-CMD ["bash"]
+CMD ["nginx", "-g", "daemon off;"]
+# CMD ["bash"]
