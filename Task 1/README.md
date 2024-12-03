@@ -34,17 +34,19 @@ There are also a variety of programs built under the `tests` directory:
 4. Any of the above tests can be run using `./{file name}`, e.g. `./speed_kem`.
 
 ```bash
-speed_kem <options> <alg>
+./speed_kem <options> <alg>
 ```
+### Options
 
-Options
-Option	Description
---algs	Print the list of supported algorithms and terminate.
---duration n / -d n	Run each speed test for approximately n seconds (default: 3).
---help / -h	Display usage instructions and terminate.
---info / -i	Print information (e.g., sizes, security levels) about each supported KEM.
---fullcycle / -f	Perform the full key generation, encapsulation, and decapsulation cycle.
-Algorithm (<alg>)
+| Option             | Description                                                                   |
+|---------------------|-------------------------------------------------------------------------------|
+| `--algs`           | Print the list of supported algorithms and terminate.                        |
+| `--duration n` / `-d n` | Run each speed test for approximately `n` seconds (default: `3`).             |
+| `--help` / `-h`    | Display usage instructions and terminate.                                    |
+| `--info` / `-i`    | Print information (e.g., sizes, security levels) about each supported KEM.   |
+| `--fullcycle` / `-f` | Perform the full key generation, encapsulation, and decapsulation cycle.      |
+
+### Algorithm (`<alg>`)
 
 Specify one of the supported algorithms listed below to run the test for that specific KEM.
 
