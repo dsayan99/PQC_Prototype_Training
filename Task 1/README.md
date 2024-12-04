@@ -36,6 +36,14 @@ There are also a variety of programs built under the `tests` directory:
 ```bash
 ./speed_kem <options> <alg>
 ```
+5. To test the key encapsulation mechanisms, you can  `./{file name}`, e.g. `./test_kem`.
+
+```bash
+./speed_kem <options> <alg>
+```
+
+6. To list the schemes that are supported, you can use the `--algs` option along with `./test_kem` or `./speed_kem`.
+
 ### Options
 
 | Option             | Description                                                                   |
