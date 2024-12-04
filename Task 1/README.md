@@ -50,7 +50,7 @@ There are also a variety of programs built under the `tests` directory:
 
 Specify one of the supported algorithms listed below to run the test for that specific KEM.
 
-Supported Algorithms
+KEM Algorithms
 
     BIKE-L1
     BIKE-L3
@@ -81,3 +81,58 @@ Supported Algorithms
     FrodoKEM-976-SHAKE
     FrodoKEM-1344-AES
     FrodoKEM-1344-SHAKE
+
+Signature Algorithms
+
+    Dilithium2
+    Dilithium3
+    Dilithium5
+    ML-DSA-44
+    ML-DSA-65
+    ML-DSA-87
+    Falcon-512
+    Falcon-1024
+    Falcon-padded-512
+    Falcon-padded-1024
+    SPHINCS+-SHA2-128f-simple
+    SPHINCS+-SHA2-128s-simple
+    SPHINCS+-SHA2-192f-simple
+    SPHINCS+-SHA2-192s-simple
+    SPHINCS+-SHA2-256f-simple
+    SPHINCS+-SHA2-256s-simple
+    SPHINCS+-SHAKE-128f-simple
+    SPHINCS+-SHAKE-128s-simple
+    SPHINCS+-SHAKE-192f-simple
+    SPHINCS+-SHAKE-192s-simple
+    SPHINCS+-SHAKE-256f-simple
+    SPHINCS+-SHAKE-256s-simple
+    MAYO-1
+    MAYO-2
+    MAYO-3
+    MAYO-5
+    cross-rsdp-128-balanced
+    cross-rsdp-128-fast
+    cross-rsdp-128-small
+    cross-rsdp-192-balanced
+    cross-rsdp-192-fast
+    cross-rsdp-192-small
+    cross-rsdp-256-balanced
+    cross-rsdp-256-fast
+    cross-rsdp-256-small
+    cross-rsdpg-128-balanced
+    cross-rsdpg-128-fast
+    cross-rsdpg-128-small
+    cross-rsdpg-192-balanced
+    cross-rsdpg-192-fast
+    cross-rsdpg-192-small
+    cross-rsdpg-256-balanced
+    cross-rsdpg-256-fast
+    cross-rsdpg-256-small
+
+To test out the performance of classical algorithms, one can run the tests using openssl.
+
+    openssl speed rsa
+    openssl speed ecdsa
+    openssl speed ecdh
+    openssl speed ffdh
+    openssl speed dsa
