@@ -1,4 +1,4 @@
-# PQC_Training_DSCI_AISS_2024
+# PQC_Prototype_Training
 
 This repository contains some Tasks for the PQC Training at DSCI, AISS, 2024.
 
