@@ -1,6 +1,6 @@
 # PQC_Prototype_Training
 
-This repository contains some Tasks for the PQC Training at DSCI, AISS, 2024.
+This repository contains some Tasks for the prototyping of some PQC implementations.
 
 Dependencies:
 
