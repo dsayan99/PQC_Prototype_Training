@@ -2,7 +2,7 @@
 
 This is a basic demo of the proxy that has been developed by PQStation Pte Ltd.
 
-The proxy file can be downloaded from `https://drive.google.com/file/d/1ZADhvLjMJZFAYT3xmtlGyk9VNJy1BUvy/view?usp=drive_link`
+The proxy file can be downloaded from `https://drive.google.com/file/d/1kb4fJqf1ZLSbAOxDfCIV65tMy7LNgcDI/view?usp=sharing`
 
 This is a docker image. After downloading, follow the steps below:
 
