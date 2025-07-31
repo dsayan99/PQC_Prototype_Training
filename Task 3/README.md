@@ -6,7 +6,7 @@ The proxy file can be downloaded from `https://drive.google.com/file/d/1kb4fJqf1
 
 This is a docker image. After downloading, follow the steps below:
 
-1. Run `docker image load -i proxy.tar` to load the docker image.
+1. Run `docker image load -i proxy-1.tar` to load the docker image.
 
 2. Run `docker run -it -p <run_port>:<run_port> proxy client <proxy_ip(ip of the proxy server)> <proxy_port(port of the proxy server)> <run_port>(port on which the client proxy will run)` for the proxy client.
 
