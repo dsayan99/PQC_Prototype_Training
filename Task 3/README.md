@@ -1,23 +1,31 @@
-# proxy-pqs
+# 🛡️ Apache with OpenSSL PQC + Test using oqs-curl
 
-This is a basic demo of the proxy that has been developed by PQStation Pte Ltd.
+This setup demonstrates running an Apache server compiled with **OpenSSL 3.5.1 + Post-Quantum Cryptography (PQC)** support, and testing it using [`oqs-curl`](https://github.com/open-quantum-safe/oqs-curl) with hybrid PQC TLS.
 
-The proxy file can be downloaded from `https://drive.google.com/file/d/1kb4fJqf1ZLSbAOxDfCIV65tMy7LNgcDI/view?usp=sharing`
+---
 
-This is a docker image. After downloading, follow the steps below:
+## 📦 Prerequisites
 
-1. Run `docker image load -i proxy-1.tar` to load the docker image.
+- Docker installed (Docker Desktop or Engine)
+- Apache image tarball: `apache-openssl-pqc.tar`
+- `oqs-curl` image tarball: `oqs-curl.tar`
+- Download the above images from `https://www.dropbox.com/scl/fo/jsyajieoc4336ty2x2uss/AEukQVwwuHUr9HLrf7Jc60c?rlkey=e6v9ncsu4qzm4zaytdftj2jiu&e=1&st=cwk1u73m&dl=0`.
+- A local `conf/` directory containing:
+  - `httpd.conf`
+  - `extra/` directory with additional Apache config
 
-2. Run `docker run -it -p <run_port>:<run_port> proxy client <proxy_ip(ip of the proxy server)> <proxy_port(port of the proxy server)> <run_port>(port on which the client proxy will run)` for the proxy client.
+---
 
-For example if the client proxy is running locally on port 9000 and server proxy is also running locally on port 9002, then run `docker run -it -p 9000:9000 proxy client 192.168.0.105 9002 9000` where `192.168.0.105` is the local IP of the PC.
+## 🚀 Steps
 
-It is to be noted that if the proxy client and proxy server are running on different PCs within the same network subnet, then local IP of the server proxy PC will work, while if it's running with static IPs, then the IP of the proxy server needs to be fed in this.
+### 1. Load Docker Images
 
-3. Run `docker run -it -p <run_port>:<run_port> proxy server <server_ip>(ip of the server that ) <server_port>(port number of the original server) <run_port>(port on which the server will run)` for the proxy server.
+docker load -i apache-openssl-pqc.tar
+docker load -i oqs-curl.tar
 
-For example if the server proxy is running locally on port 9002 and server is at 3.115.153.86:443, then run `docker run -it -p 9002:9002 proxy server 3.115.153.86 443 9002`.
+### 2. Run Apache Server
+docker run -d -v $(pwd)/conf:/usr/local/apache2/conf -p 8443:443 apache-openssl-pqc
 
-4. Run the Client.py script `python3 Client.py` to fetch the key from the server through the proxies.
-
+### 3. Test command
+docker run -it oqs-curl curl -k https://host.docker.internal:8443/ --curves mlkem512
 

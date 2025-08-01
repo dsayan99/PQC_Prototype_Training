@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  scg:
+    image: my-scg-app
+    container_name: scg
+    ports:
+      - "8081:8081"
+    environment:
+      KEYSTORE_PWD: changeit
+      spring_profiles_active: prod
+      JAVA_OPTS: >
+        -Djava.protocol.handler.pkgs=org.bouncycastle.jsse.provider
+        -Djdk.tls.namedGroups=x25519,mlkem512,secp256r1
+        -Djavax.net.debug=ssl:handshake:verbose:keymanager:trustmanager
+    networks:
+      - pqc-test  
+    pull_policy: never
+
+  ms1:
+    image: microservice1-pqs
+    container_name: ms1
+    ports:
+      - "8082:8082"
+    networks:
+      - pqc-test
+    pull_policy: never
+
+networks:
+  pqc-test:
+    #external: true
+    name: pqc-test
+    driver: bridge
+
